@@ -63,10 +63,10 @@ public class GetCurrencyTest {
 
     @Test
     public void testSpecificCurrencySymbol() {
-        HashMap<String,String> params = new HashMap<>();
+        HashMap<String, String> params = new HashMap<>();
         params.put("symbol", "SAR");
         Response response = getResponseByParams(Endpoints.getCurrency.getValue(), params);
-        GetCurrencyResponseModel [] getCurrencyResponseModel = response.then().extract().as(GetCurrencyResponseModel[].class);
+        GetCurrencyResponseModel[] getCurrencyResponseModel = response.then().extract().as(GetCurrencyResponseModel[].class);
         response.then().assertThat().body("symbol", hasItem(params.get("SAR")));
 
     }
