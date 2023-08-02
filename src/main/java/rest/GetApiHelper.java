@@ -14,7 +14,11 @@ public class GetApiHelper {
     public static Response getResponseAsString(String apiUrl) {
         Properties browserProps = readPropertyFile("src/main/resources/api-config.properties");
         if (ResponseHandler.isNotNullOrEmpty(apiUrl))
-            return RestAssured.given().that().when().get(browserProps.getProperty("api-baseurl").concat(apiUrl)).thenReturn();
+            return RestAssured.
+                    given().that()
+                    .when()
+                    .get(browserProps.getProperty("api-baseurl").concat(apiUrl))
+                    .thenReturn();
         Assert.fail(ApiConstants.INVALID_EMPTY_URL_ERROR);
         return null;
     }
@@ -22,7 +26,11 @@ public class GetApiHelper {
     public static Response getResponseAsString(String apiUrl, String parameter) {
         Properties browserProps = readPropertyFile("src/main/resources/api-config.properties");
         if (ResponseHandler.isNotNullOrEmpty(apiUrl))
-            return RestAssured.given().that().when().get(browserProps.getProperty("api-baseurl").concat(apiUrl).concat(parameter)).thenReturn();
+            return RestAssured.given()
+                    .that()
+                    .when()
+                    .get(browserProps.getProperty("api-baseurl").concat(apiUrl).concat(parameter))
+                    .thenReturn();
         Assert.fail(ApiConstants.INVALID_EMPTY_URL_ERROR);
         return null;
     }
